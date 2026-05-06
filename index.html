@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mercado Pago × Blip · Visão de Futuro · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blip-blue: #0096FA;
+    --blip-blue-dark: #0073C2;
+    --blip-blue-soft: rgba(0, 150, 250, 0.12);
+    --blip-blue-glow: rgba(0, 150, 250, 0.35);
+    --blip-black: #07090F;
+    --blip-black-soft: #0F1320;
+    --blip-gray-dark: #161B2B;
+    --blip-gray: #232A3D;
+    --blip-gray-mid: #3A4358;
+    --blip-gray-light: #8B93A7;
+    --blip-white: #FFFFFF;
+    --blip-white-soft: #E5E7EB;
+    --blip-white-dim: #B8BFCF;
+
+    --mp-yellow: #FFE600;
+    --mp-blue: #00B1EA;
+    --mp-blue-dark: #009EE3;
+
+    /* WhatsApp native */
+    --wa-bg: #efeae2;
+    --wa-bg-pattern: #e3dcd2;
+    --wa-header: #008069;
+    --wa-bubble-sent: #d9fdd3;
+    --wa-bubble-received: #ffffff;
+    --wa-text-primary: #111b21;
+    --wa-text-secondary: #667781;
+    --wa-button: #027eb5;
+    --wa-button-bg: #ffffff;
+    --wa-divider: #e9edef;
+    --wa-link: #027eb5;
+    --wa-check-blue: #53bdeb;
+    --wa-input-bg: #ffffff;
+    --wa-business-tag: #008069;
+
+    /* RCS native (Google Messages) */
+    --rcs-bg: #ffffff;
+    --rcs-header: #ffffff;
+    --rcs-bubble-sent: #1A73E8;
+    --rcs-bubble-sent-text: #ffffff;
+    --rcs-bubble-received: #f1f3f4;
+    --rcs-bubble-received-text: #202124;
+    --rcs-suggested-bg: #ffffff;
+    --rcs-suggested-border: #dadce0;
+    --rcs-suggested-text: #1a73e8;
+    --rcs-card-bg: #ffffff;
+    --rcs-card-border: #dadce0;
+    --rcs-text-secondary: #5f6368;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Lexend', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--blip-black);
+    color: var(--blip-white);
+    line-height: 1.55;
+    overflow-x: hidden;
+    font-weight: 300;
+  }
+
+  /* ================ NAVBAR ================ */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(7, 9, 15, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    z-index: 100;
+    padding: 14px 32px;
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; font-weight: 500;
+    color: var(--blip-white-dim);
+    letter-spacing: 0.02em;
+  }
+  .nav-brand-mark {
+    width: 24px; height: 24px;
+    background: var(--blip-blue); border-radius: 50%;
+    position: relative;
+  }
+  .nav-brand-mark::after {
+    content: ''; position: absolute;
+    bottom: -3px; right: 2px;
+    width: 8px; height: 8px;
+    background: var(--blip-blue);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-link {
+    color: var(--blip-gray-light);
+    text-decoration: none;
+    font-size: 13px; font-weight: 400;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .nav-link:hover { color: var(--blip-blue); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* ================ SECTIONS ================ */
+  section { padding: 120px 32px; position: relative; }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .container-narrow { max-width: 960px; margin: 0 auto; }
+
+  /* ================ HERO ================ */
+  .hero {
+    min-height: 100vh; padding: 0 32px;
+    display: flex; align-items: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 50%, rgba(0,150,250,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 100% 0%, rgba(0,177,234,0.08) 0%, transparent 50%),
+      var(--blip-black);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; width: 100%; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blip-blue); margin-bottom: 32px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 32px; height: 1px;
+    background: var(--blip-blue);
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 700; line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 32px;
+    color: var(--blip-white);
+  }
+  .hero h1 .highlight { color: var(--blip-blue); }
+  .hero-sub {
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--blip-white-dim);
+    max-width: 640px; line-height: 1.5;
+    font-weight: 300;
+  }
+  .hero-meta {
+    margin-top: 80px;
+    display: flex; gap: 48px; flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-meta-item {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .hero-meta-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--blip-gray-light);
+  }
+  .hero-meta-value {
+    font-size: 16px; font-weight: 500;
+    color: var(--blip-white);
+  }
+  .hero-partners {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-partner-logo {
+    height: 36px; padding: 0 14px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500;
+    color: var(--blip-white);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-partner-logo .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ================ MOMENT (build vs buy soft) ================ */
+  .moment {
+    background: var(--blip-black-soft);
+    position: relative;
+  }
+  .moment::before {
+    content: '';
+    position: absolute; left: 0; right: 0; top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,150,250,0.4), transparent);
+  }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--blip-blue);
+    margin-bottom: 24px;
+  }
+  .section-eyebrow::before {
+    content: ''; width: 24px; height: 1px;
+    background: var(--blip-blue);
+  }
+  .section-title {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 600; line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    color: var(--blip-white);
+  }
+  .section-lead {
+    font-size: 19px; line-height: 1.55;
+    color: var(--blip-white-dim);
+    max-width: 720px;
+    font-weight: 300;
+  }
+  .moment-grid {
+    margin-top: 64px;
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .moment-card {
+    padding: 32px;
+    background: var(--blip-gray-dark);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    transition: all 0.3s;
+  }
+  .moment-card:hover {
+    border-color: var(--blip-blue);
+    transform: translateY(-2px);
+  }
+  .moment-card-num {
+    font-size: 36px; font-weight: 700;
+    color: var(--blip-blue);
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .moment-card-label {
+    font-size: 13px; font-weight: 500;
+    color: var(--blip-white);
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+  .moment-card-desc {
+    font-size: 13px; color: var(--blip-gray-light);
+    line-height: 1.5;
+  }
+
+  /* ================ PILLARS OVERVIEW ================ */
+  .pillars-overview { background: var(--blip-black); }
+  .pillars-grid {
+    margin-top: 64px;
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .pillar-card {
+    padding: 36px 32px;
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, var(--blip-black-soft) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .pillar-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blip-blue), var(--mp-blue));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .pillar-card:hover::before { transform: scaleX(1); }
+  .pillar-card:hover {
+    border-color: rgba(0,150,250,0.25);
+    transform: translateY(-4px);
+  }
+  .pillar-num {
+    font-size: 13px; font-weight: 600;
+    color: var(--blip-blue); letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .pillar-name {
+    font-size: 22px; font-weight: 600;
+    color: var(--blip-white); margin-bottom: 14px;
+    line-height: 1.2; letter-spacing: -0.015em;
+  }
+  .pillar-tagline {
+    font-size: 14px; color: var(--blip-white-dim);
+    line-height: 1.55; font-weight: 300;
+  }
+  .pillar-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 5px 12px;
+    background: var(--blip-blue-soft);
+    border: 1px solid rgba(0,150,250,0.3);
+    border-radius: 999px;
+    font-size: 11px; font-weight: 500;
+    color: var(--blip-blue);
+    letter-spacing: 0.04em;
+  }
+  .pillar-tag.farming { background: rgba(0,177,234,0.12); border-color: rgba(0,177,234,0.3); color: var(--mp-blue); }
+
+  /* ================ PILLAR DETAIL ================ */
+  .pillar-detail {
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .pillar-detail.alt { background: var(--blip-black-soft); }
+  .pillar-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .pillar-header-left h2 {
+    font-size: clamp(34px, 4.5vw, 48px);
+    font-weight: 600; letter-spacing: -0.025em;
+    line-height: 1.05; margin-top: 12px; max-width: 740px;
+  }
+  .pillar-header-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pillar-meta-chip {
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    font-size: 11px; font-weight: 500;
+    color: var(--blip-white-dim);
+    letter-spacing: 0.03em;
+  }
+  .pillar-meta-chip.hunting { color: var(--blip-blue); border-color: rgba(0,150,250,0.3); background: var(--blip-blue-soft); }
+  .pillar-meta-chip.farming { color: var(--mp-blue); border-color: rgba(0,177,234,0.3); background: rgba(0,177,234,0.08); }
+
+  .pillar-split {
+    display: grid; gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 880px) { .pillar-split { grid-template-columns: 1fr; } }
+
+  .pillar-state {
+    padding: 32px;
+    background: var(--blip-gray-dark);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .pillar-state.future {
+    border-color: rgba(0,150,250,0.25);
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, rgba(0,150,250,0.04) 100%);
+  }
+  .pillar-state-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blip-gray-light);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pillar-state.future .pillar-state-label { color: var(--blip-blue); }
+  .pillar-state-label::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--blip-gray-light); border-radius: 50%;
+  }
+  .pillar-state.future .pillar-state-label::before { background: var(--blip-blue); box-shadow: 0 0 12px var(--blip-blue-glow); }
+
+  .pillar-state-title {
+    font-size: 20px; font-weight: 500;
+    color: var(--blip-white); margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .pillar-state-list { list-style: none; }
+  .pillar-state-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px; color: var(--blip-white-dim);
+    display: flex; gap: 12px;
+    line-height: 1.5; font-weight: 300;
+  }
+  .pillar-state-list li:last-child { border-bottom: none; }
+  .pillar-state-list li::before {
+    content: '−'; color: var(--blip-gray-light);
+    font-weight: 400; flex-shrink: 0;
+  }
+  .pillar-state.future .pillar-state-list li::before { content: '+'; color: var(--blip-blue); font-weight: 600; }
+
+  /* Highlight item (case Rafael, etc) */
+  .pillar-state-list li.highlight {
+    background: rgba(0,150,250,0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 6px -2px;
+    border: 1px solid rgba(0,150,250,0.2);
+  }
+  .pillar-state-list li.highlight::before { color: var(--blip-blue); }
+  .pillar-state-list li.highlight strong {
+    color: var(--blip-white); font-weight: 500;
+  }
+  .pillar-state-list li.highlight .ref {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px; color: var(--blip-gray-light);
+    font-style: italic;
+  }
+
+  /* Metrics row */
+  .pillar-metrics {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: 24px;
+  }
+  .metric-item {
+    padding: 20px 22px;
+    background: rgba(0,150,250,0.04);
+    border: 1px solid rgba(0,150,250,0.15);
+    border-radius: 12px;
+  }
+  .metric-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blip-blue);
+    margin-bottom: 10px;
+  }
+  .metric-value {
+    font-size: 14px; color: var(--blip-white);
+    line-height: 1.4; font-weight: 400;
+  }
+
+  /* Native moat tag */
+  .native-moat {
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, rgba(0,150,250,0.1), rgba(37,211,102,0.05));
+    border-left: 3px solid var(--blip-blue);
+    border-radius: 10px;
+    font-size: 13px; color: var(--blip-white-dim);
+    line-height: 1.55;
+  }
+  .native-moat strong {
+    color: var(--blip-blue); font-weight: 500;
+    display: block; margin-bottom: 4px;
+    font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* External reference */
+  .external-ref {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(255,230,0,0.04);
+    border: 1px dashed rgba(255,230,0,0.25);
+    border-radius: 10px;
+    font-size: 12px; color: var(--blip-white-dim);
+    line-height: 1.6;
+  }
+  .external-ref strong { color: var(--mp-yellow); font-weight: 500; }
+
+  /* ================ MOCKUP — WHATSAPP ================ */
+  .mockup-section {
+    background: linear-gradient(180deg, var(--blip-black) 0%, var(--blip-black-soft) 100%);
+    padding: 100px 32px;
+  }
+  .mockup-header {
+    text-align: center; margin-bottom: 64px;
+  }
+  .mockup-header .section-eyebrow { justify-content: center; }
+  .mockup-header h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600; letter-spacing: -0.02em;
+    color: var(--blip-white); margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .mockup-header p {
+    font-size: 16px; color: var(--blip-white-dim);
+    max-width: 600px; margin: 0 auto;
+    font-weight: 300;
+  }
+  .mockup-stage {
+    display: flex; gap: 64px; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .mockup-narration {
+    max-width: 360px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .narration-item {
+    padding: 18px 20px;
+    background: var(--blip-gray-dark);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    border-left: 3px solid var(--blip-blue);
+    font-size: 13px; color: var(--blip-white-dim);
+    line-height: 1.5; font-weight: 300;
+  }
+  .narration-item strong {
+    color: var(--blip-white); font-weight: 500;
+    display: block; margin-bottom: 4px;
+    font-size: 12px; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blip-blue);
+  }
+
+  /* WhatsApp phone */
+  .wa-phone {
+    width: 360px; height: 720px;
+    background: #000;
+    border-radius: 42px;
+    padding: 12px;
+    box-shadow:
+      0 50px 100px -30px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(255,255,255,0.1),
+      0 0 0 2px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .wa-phone-screen {
+    width: 100%; height: 100%;
+    background: var(--wa-bg);
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .wa-notch {
+    position: absolute;
+    top: 8px; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 24px;
+    background: #000;
+    border-radius: 999px;
+    z-index: 10;
+  }
+  /* WA Header */
+  .wa-header {
+    background: var(--wa-header);
+    padding: 38px 16px 12px;
+    display: flex; align-items: center; gap: 12px;
+    color: white; flex-shrink: 0;
+  }
+  .wa-back { font-size: 18px; opacity: 0.9; }
+  .wa-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mp-yellow), var(--mp-blue));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    color: white;
+  }
+  .wa-contact-info { flex: 1; line-height: 1.2; }
+  .wa-contact-name {
+    font-size: 14px; font-weight: 500;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .wa-verified {
+    width: 14px; height: 14px;
+    background: white; color: var(--wa-header);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 8px; font-weight: 800;
+  }
+  .wa-contact-status {
+    font-size: 11px; opacity: 0.85;
+    margin-top: 2px;
+  }
+  .wa-icons { display: flex; gap: 16px; opacity: 0.95; }
+  .wa-icons span { font-size: 16px; }
+
+  /* Body */
+  .wa-body {
+    flex: 1; overflow-y: auto;
+    padding: 12px 10px;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(195,180,165,0.18) 0%, transparent 30%),
+      radial-gradient(circle at 80% 60%, rgba(195,180,165,0.18) 0%, transparent 30%),
+      var(--wa-bg);
+    display: flex; flex-direction: column;
+    gap: 4px;
+  }
+  .wa-body::-webkit-scrollbar { width: 4px; }
+  .wa-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+
+  /* Messages */
+  .wa-msg {
+    max-width: 78%;
+    padding: 6px 10px 5px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--wa-text-primary);
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    animation: waSlide 0.4s ease forwards;
+    opacity: 0;
+  }
+  @keyframes waSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .wa-msg.received {
+    background: var(--wa-bubble-received);
+    align-self: flex-start;
+    border-top-left-radius: 0;
+  }
+  .wa-msg.sent {
+    background: var(--wa-bubble-sent);
+    align-self: flex-end;
+    border-top-right-radius: 0;
+  }
+  .wa-time {
+    font-size: 10px;
+    color: var(--wa-text-secondary);
+    float: right;
+    margin: 4px 0 -2px 6px;
+    line-height: 1;
+  }
+  .wa-time .checks { color: var(--wa-check-blue); margin-left: 2px; font-size: 11px; }
+
+  /* Reply buttons */
+  .wa-reply-buttons {
+    align-self: stretch;
+    display: flex; flex-direction: column;
+    gap: 1px;
+    margin-top: -2px;
+    animation: waSlide 0.5s ease forwards;
+    opacity: 0;
+  }
+  .wa-reply-btn {
+    background: var(--wa-button-bg);
+    color: var(--wa-button);
+    border: none;
+    padding: 9px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    border-radius: 7px;
+    transition: background 0.15s;
+    font-family: inherit;
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px;
+  }
+  .wa-reply-btn:hover { background: #f5f6f6; }
+  .wa-reply-btn::before {
+    content: '↩'; font-size: 12px; opacity: 0.7;
+  }
+
+  /* List message */
+  .wa-list-trigger {
+    align-self: stretch;
+    background: var(--wa-button-bg);
+    border-top: 1px solid var(--wa-divider);
+    padding: 10px;
+    text-align: center;
+    color: var(--wa-button);
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    border-radius: 0 0 8px 8px;
+    margin-top: -8px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px;
+  }
+  .wa-list-trigger::before {
+    content: '☰'; font-size: 14px;
+  }
+
+  /* Carousel */
+  .wa-carousel {
+    align-self: stretch;
+    display: flex; gap: 6px;
+    overflow-x: auto; overflow-y: hidden;
+    padding: 4px 2px 8px;
+    scrollbar-width: none;
+    margin: 4px -4px;
+    animation: waSlide 0.5s ease forwards;
+    opacity: 0;
+  }
+  .wa-carousel::-webkit-scrollbar { display: none; }
+  .wa-card {
+    flex-shrink: 0;
+    width: 200px;
+    background: var(--wa-bubble-received);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.13);
+  }
+  .wa-card-img {
+    width: 100%; height: 110px;
+    background: linear-gradient(135deg, #e8eaed 0%, #c4c8cf 100%);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wa-card-img.point-mini { background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%); }
+  .wa-card-img.point-pro { background: linear-gradient(135deg, #009ee3 0%, #00b1ea 100%); }
+  .wa-card-img.point-smart { background: linear-gradient(135deg, #2c3e50 0%, #4a5568 100%); }
+  .wa-card-device {
+    width: 60px; height: 76px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 8px;
+    display: flex; flex-direction: column;
+    padding: 6px;
+    gap: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .wa-card-device-screen {
+    background: #1a1a2e;
+    border-radius: 4px;
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wa-card-device-screen::before {
+    content: '$';
+    color: var(--mp-yellow);
+    font-size: 18px; font-weight: 700;
+  }
+  .wa-card-device-keys {
+    height: 24px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    padding: 1px;
+  }
+  .wa-card-device-keys span {
+    background: #f5f5f5;
+    border-radius: 1px;
+  }
+  .wa-card-body {
+    padding: 8px 10px 10px;
+  }
+  .wa-card-title {
+    font-size: 12px; font-weight: 600;
+    color: var(--wa-text-primary);
+    margin-bottom: 3px;
+    letter-spacing: -0.005em;
+  }
+  .wa-card-desc {
+    font-size: 10px; color: var(--wa-text-secondary);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .wa-card-cta {
+    text-align: center;
+    padding: 6px;
+    border-top: 1px solid var(--wa-divider);
+    color: var(--wa-button);
+    font-size: 12px; font-weight: 500;
+    cursor: pointer;
+    margin: 4px -10px -10px;
+  }
+
+  /* Typing indicator */
+  .wa-typing {
+    align-self: flex-start;
+    background: var(--wa-bubble-received);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    display: flex; gap: 3px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  }
+  .wa-typing span {
+    width: 6px; height: 6px;
+    background: var(--wa-text-secondary);
+    border-radius: 50%;
+    animation: waTyping 1.4s infinite;
+  }
+  .wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes waTyping {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  /* Input */
+  .wa-input {
+    background: var(--wa-bg);
+    padding: 8px 8px;
+    display: flex; align-items: center; gap: 6px;
+    flex-shrink: 0;
+  }
+  .wa-input-field {
+    flex: 1;
+    background: var(--wa-input-bg);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 12px; color: var(--wa-text-secondary);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .wa-input-mic {
+    width: 38px; height: 38px;
+    background: var(--wa-header);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px;
+  }
+
+  /* Controls (replay) */
+  .mockup-controls {
+    margin-top: 32px;
+    display: flex; justify-content: center; gap: 12px;
+  }
+  .mockup-btn {
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--blip-white);
+    border-radius: 999px;
+    font-size: 12px; font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .mockup-btn:hover {
+    background: var(--blip-blue-soft);
+    border-color: var(--blip-blue);
+    color: var(--blip-blue);
+  }
+  .mockup-btn:active { transform: scale(0.97); }
+
+  /* ================ RCS MOCKUP ================ */
+  .rcs-phone {
+    width: 360px; height: 720px;
+    background: #000;
+    border-radius: 42px;
+    padding: 12px;
+    box-shadow:
+      0 50px 100px -30px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(255,255,255,0.1),
+      0 0 0 2px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .rcs-screen {
+    width: 100%; height: 100%;
+    background: var(--rcs-bg);
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .rcs-notch {
+    position: absolute;
+    top: 8px; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 24px;
+    background: #000;
+    border-radius: 999px;
+    z-index: 10;
+  }
+  .rcs-header {
+    background: var(--rcs-bg);
+    padding: 38px 16px 12px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid #e8eaed;
+    flex-shrink: 0;
+  }
+  .rcs-back { font-size: 18px; color: #5f6368; }
+  .rcs-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mp-yellow), var(--mp-blue));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: white;
+    position: relative;
+  }
+  .rcs-avatar::after {
+    content: '✓';
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 16px; height: 16px;
+    background: #1a73e8;
+    color: white; font-size: 10px; font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid white;
+  }
+  .rcs-name { font-size: 14px; font-weight: 500; color: #202124; }
+  .rcs-name-row { display: flex; align-items: center; gap: 4px; }
+  .rcs-verified-badge {
+    font-size: 9px; color: #1a73e8;
+    background: #e8f0fe;
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 500;
+  }
+  .rcs-status { font-size: 11px; color: var(--rcs-text-secondary); margin-top: 2px; }
+
+  .rcs-body {
+    flex: 1; overflow-y: auto;
+    padding: 16px 12px;
+    display: flex; flex-direction: column;
+    gap: 6px;
+    background: var(--rcs-bg);
+  }
+  .rcs-body::-webkit-scrollbar { width: 4px; }
+
+  .rcs-msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    line-height: 1.4;
+    animation: waSlide 0.4s ease forwards;
+    opacity: 0;
+  }
+  .rcs-msg.received {
+    background: var(--rcs-bubble-received);
+    color: var(--rcs-bubble-received-text);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .rcs-msg.sent {
+    background: var(--rcs-bubble-sent);
+    color: var(--rcs-bubble-sent-text);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .rcs-msg-time {
+    font-size: 10px;
+    color: var(--rcs-text-secondary);
+    align-self: center;
+    margin: 4px 0;
+  }
+
+  /* Rich card */
+  .rcs-card {
+    align-self: stretch;
+    background: var(--rcs-card-bg);
+    border: 1px solid var(--rcs-card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    animation: waSlide 0.5s ease forwards;
+    opacity: 0;
+  }
+  .rcs-card-media {
+    width: 100%; height: 140px;
+    background: linear-gradient(135deg, #009ee3 0%, #00b1ea 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .rcs-card-media-tag {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: rgba(0,0,0,0.55);
+    color: white; padding: 4px 10px;
+    font-size: 10px; font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .rcs-card-device-img {
+    width: 80px; height: 100px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    display: flex; flex-direction: column;
+    padding: 8px; gap: 6px;
+  }
+  .rcs-card-device-img .scr {
+    background: #1a1a2e;
+    border-radius: 5px;
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rcs-card-device-img .scr::before {
+    content: 'R$ 0,00'; color: var(--mp-yellow);
+    font-size: 10px; font-weight: 600;
+  }
+  .rcs-card-device-img .keys {
+    height: 28px;
+    background: #e0e0e0;
+    border-radius: 4px;
+  }
+  .rcs-card-content { padding: 12px 14px 6px; }
+  .rcs-card-title {
+    font-size: 14px; font-weight: 500;
+    color: #202124; margin-bottom: 4px;
+  }
+  .rcs-card-desc {
+    font-size: 12px; color: var(--rcs-text-secondary);
+    line-height: 1.4;
+  }
+  .rcs-card-actions {
+    display: flex;
+    border-top: 1px solid var(--rcs-card-border);
+  }
+  .rcs-card-action {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    color: var(--rcs-suggested-text);
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    background: white;
+  }
+  .rcs-card-action:not(:last-child) {
+    border-right: 1px solid var(--rcs-card-border);
+  }
+
+  /* RCS Suggested replies (chips) */
+  .rcs-chips {
+    display: flex; flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 0;
+    align-self: flex-start;
+    max-width: 100%;
+    animation: waSlide 0.4s ease forwards;
+    opacity: 0;
+  }
+  .rcs-chip {
+    background: var(--rcs-suggested-bg);
+    border: 1px solid var(--rcs-suggested-border);
+    color: var(--rcs-suggested-text);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: inherit;
+  }
+  .rcs-chip:hover { background: #f1f3f4; }
+
+  .rcs-input {
+    background: var(--rcs-bg);
+    padding: 8px 12px 12px;
+    display: flex; align-items: center; gap: 8px;
+    border-top: 1px solid #e8eaed;
+    flex-shrink: 0;
+  }
+  .rcs-input-field {
+    flex: 1;
+    background: #f1f3f4;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 13px; color: var(--rcs-text-secondary);
+  }
+  .rcs-input-send {
+    width: 38px; height: 38px;
+    background: #1a73e8;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px;
+  }
+
+  /* ================ HUB SECTION ================ */
+  .hub {
+    background: var(--blip-black);
+    text-align: center;
+  }
+  .hub-graph {
+    margin: 64px auto 0;
+    max-width: 900px;
+    position: relative;
+    aspect-ratio: 16 / 10;
+  }
+  .hub-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px; height: 200px;
+    background: linear-gradient(135deg, var(--blip-blue), var(--blip-blue-dark));
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow:
+      0 0 0 1px rgba(0,150,250,0.3),
+      0 0 60px var(--blip-blue-glow),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+    z-index: 10;
+  }
+  .hub-center-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+  .hub-center-title {
+    font-size: 22px; font-weight: 600;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .hub-center-sub {
+    font-size: 13px; color: rgba(255,255,255,0.85);
+    margin-top: 8px; font-weight: 300;
+  }
+  .hub-node {
+    position: absolute;
+    background: var(--blip-gray-dark);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 18px 22px;
+    text-align: left;
+    width: 220px;
+    transition: all 0.3s;
+  }
+  .hub-node:hover {
+    border-color: var(--blip-blue);
+    transform: scale(1.03);
+  }
+  .hub-node-num {
+    font-size: 11px; font-weight: 600;
+    color: var(--blip-blue);
+    letter-spacing: 0.1em; margin-bottom: 6px;
+  }
+  .hub-node-title {
+    font-size: 14px; font-weight: 500;
+    color: var(--blip-white); line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+  .hub-node.n1 { top: 8%; left: 10%; }
+  .hub-node.n2 { top: 8%; right: 10%; }
+  .hub-node.n3 { bottom: 8%; left: 10%; }
+  .hub-node.n4 { bottom: 8%; right: 10%; }
+  .hub-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--blip-blue), transparent);
+    height: 1px;
+    z-index: 1;
+    opacity: 0.4;
+  }
+  @media (max-width: 880px) {
+    .hub-graph { aspect-ratio: auto; }
+    .hub-center { position: relative; transform: none; margin: 0 auto 32px; left: 0; top: 0; }
+    .hub-node { position: relative; width: 100%; max-width: 360px; margin: 12px auto; top: auto; left: auto; right: auto; bottom: auto; }
+    .hub-line { display: none; }
+  }
+
+  /* ================ MOAT TECH ================ */
+  .moat {
+    background: var(--blip-black-soft);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .moat-grid {
+    margin-top: 56px;
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .moat-item {
+    padding: 24px 26px;
+    background: var(--blip-gray-dark);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--blip-blue);
+    display: flex; align-items: flex-start; gap: 16px;
+    transition: all 0.3s;
+  }
+  .moat-item:hover {
+    background: var(--blip-gray);
+    transform: translateX(2px);
+  }
+  .moat-icon {
+    width: 36px; height: 36px;
+    background: var(--blip-blue-soft);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .moat-icon svg { width: 20px; height: 20px; }
+  .moat-text { flex: 1; }
+  .moat-title {
+    font-size: 14px; font-weight: 500;
+    color: var(--blip-white); margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .moat-desc {
+    font-size: 12px; color: var(--blip-gray-light);
+    line-height: 1.5; font-weight: 300;
+  }
+
+  /* ================ NEXT STEPS ================ */
+  .next-steps {
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 100%, rgba(0,150,250,0.18) 0%, transparent 60%),
+      var(--blip-black);
+    text-align: center;
+  }
+  .next-cta-card {
+    margin: 48px auto 0;
+    max-width: 760px;
+    padding: 48px 40px;
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, rgba(0,150,250,0.05) 100%);
+    border: 1px solid rgba(0,150,250,0.2);
+    border-radius: 20px;
+  }
+  .next-cta-title {
+    font-size: 28px; font-weight: 600;
+    color: var(--blip-white); margin-bottom: 16px;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .next-cta-desc {
+    font-size: 16px; color: var(--blip-white-dim);
+    margin-bottom: 32px; line-height: 1.55;
+    font-weight: 300;
+  }
+  .next-tracks {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: 32px; text-align: left;
+  }
+  .next-track {
+    padding: 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .next-track-num {
+    font-size: 11px; font-weight: 600;
+    color: var(--blip-blue); letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .next-track-title {
+    font-size: 13px; font-weight: 500;
+    color: var(--blip-white); line-height: 1.3;
+  }
+
+  /* ================ FOOTER ================ */
+  footer {
+    padding: 48px 32px;
+    background: var(--blip-black);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+  }
+  footer .container {
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-brand { color: var(--blip-white-dim); font-size: 13px; }
+  .footer-meta { color: var(--blip-gray-light); font-size: 12px; }
+
+  /* ================ FADE IN SCROLL ================ */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Citation/source marks */
+  sup.cite {
+    color: var(--blip-blue);
+    font-size: 0.7em;
+    font-weight: 500;
+    margin-left: 2px;
+    cursor: help;
+  }
+
+  /* ================ PASSWORD GATE ================ */
+  .gate {
+    position: fixed; inset: 0;
+    z-index: 9999;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 50%, rgba(0,150,250,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 100% 0%, rgba(0,177,234,0.08) 0%, transparent 50%),
+      var(--blip-black);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  .gate::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+    pointer-events: none;
+  }
+  .gate.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .gate-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 460px;
+    padding: 48px 40px;
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, var(--blip-black-soft) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+  }
+  .gate-card.shake {
+    animation: gateShake 0.45s cubic-bezier(.36,.07,.19,.97);
+  }
+  @keyframes gateShake {
+    10%, 90% { transform: translateX(-2px); }
+    20%, 80% { transform: translateX(4px); }
+    30%, 50%, 70% { transform: translateX(-8px); }
+    40%, 60% { transform: translateX(8px); }
+  }
+  .gate-brand {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blip-gray-light);
+  }
+  .gate-brand-mark {
+    width: 18px; height: 18px;
+    background: var(--blip-blue);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 16px var(--blip-blue-glow);
+  }
+  .gate-brand-mark::after {
+    content: ''; position: absolute;
+    bottom: -2px; right: 1px;
+    width: 6px; height: 6px;
+    background: var(--blip-blue);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .gate-eyebrow {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--blip-blue);
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .gate-eyebrow::before {
+    content: ''; width: 24px; height: 1px;
+    background: var(--blip-blue);
+  }
+  .gate-title {
+    font-size: 26px; font-weight: 600;
+    color: var(--blip-white);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .gate-sub {
+    font-size: 14px;
+    color: var(--blip-white-dim);
+    line-height: 1.55;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .gate-form {
+    display: flex; flex-direction: column;
+    gap: 14px;
+  }
+  .gate-input-wrap {
+    position: relative;
+  }
+  .gate-input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px 50px 16px 18px;
+    font-size: 14px;
+    color: var(--blip-white);
+    font-family: inherit;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    outline: none;
+  }
+  .gate-input::placeholder {
+    color: var(--blip-gray-light);
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+  .gate-input:focus {
+    border-color: var(--blip-blue);
+    background: rgba(0,150,250,0.05);
+    box-shadow: 0 0 0 3px var(--blip-blue-soft);
+  }
+  .gate-input.error {
+    border-color: #FF5C5C;
+    background: rgba(255,92,92,0.05);
+  }
+  .gate-toggle {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--blip-gray-light);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: color 0.2s;
+  }
+  .gate-toggle:hover { color: var(--blip-blue); }
+  .gate-submit {
+    background: var(--blip-blue);
+    color: var(--blip-white);
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px;
+  }
+  .gate-submit:hover {
+    background: var(--blip-blue-dark);
+    box-shadow: 0 8px 24px var(--blip-blue-glow);
+    transform: translateY(-1px);
+  }
+  .gate-submit:active { transform: translateY(0); }
+  .gate-error {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #FF8888;
+    line-height: 1.4;
+    min-height: 16px;
+    display: flex; align-items: center; gap: 6px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .gate-error.show { opacity: 1; }
+  .gate-error::before {
+    content: '!';
+    width: 14px; height: 14px;
+    background: rgba(255,92,92,0.2);
+    color: #FF8888;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .gate-foot {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: var(--blip-gray-light);
+    letter-spacing: 0.04em;
+    text-align: center;
+    line-height: 1.5;
+  }
+  /* Lock body scroll while gate is active */
+  body.locked { overflow: hidden; height: 100vh; }
+
+  /* ================ YDUQS CASE ================ */
+  .case-yduqs {
+    background: var(--blip-black-soft);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .case-video-wrap {
+    margin: 56px 0 64px;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--blip-black);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+  }
+  .case-video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .case-columns {
+    display: grid; gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 880px) { .case-columns { grid-template-columns: 1fr; } }
+  .case-col {
+    padding: 36px 32px;
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, var(--blip-black-soft) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+  }
+  .case-col.future {
+    border-color: rgba(0,150,250,0.25);
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, rgba(0,150,250,0.05) 100%);
+  }
+  .case-col-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--blip-gray-light);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .case-col.future .case-col-label { color: var(--blip-blue); }
+  .case-col-label::before {
+    content: ''; width: 8px; height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .case-col.future .case-col-label::before { box-shadow: 0 0 12px var(--blip-blue-glow); }
+  .case-list {
+    list-style: none;
+  }
+  .case-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    color: var(--blip-white-dim);
+    line-height: 1.5;
+    font-weight: 300;
+    display: flex;
+    gap: 12px;
+  }
+  .case-list li:first-child { padding-top: 0; }
+  .case-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .case-list li::before {
+    content: '✓';
+    color: var(--blip-blue);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .case-future-list { list-style: none; }
+  .case-future-item {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .case-future-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .case-future-item:first-child { padding-top: 0; }
+  .case-future-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--blip-white);
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+  }
+  .case-future-desc {
+    font-size: 13px;
+    color: var(--blip-white-dim);
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  .case-future-impact {
+    display: inline-block;
+    padding: 5px 12px;
+    background: var(--blip-blue-soft);
+    border: 1px solid rgba(0,150,250,0.25);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--blip-blue);
+  }
+  .case-quote {
+    margin-top: 16px;
+    padding: 28px 36px;
+    background: linear-gradient(135deg, rgba(0,150,250,0.08), rgba(0,177,234,0.04));
+    border-left: 3px solid var(--blip-blue);
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--blip-white-dim);
+    font-weight: 300;
+  }
+  .case-quote strong {
+    color: var(--blip-white);
+    font-weight: 500;
+    font-size: 19px;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ================ WHATSAPP CTA ================ */
+  .cta-wa {
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,150,250,0.18) 0%, transparent 60%),
+      var(--blip-black);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .cta-wa-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600;
+    color: var(--blip-white);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .cta-wa-desc {
+    font-size: 16px;
+    color: var(--blip-white-dim);
+    line-height: 1.55;
+    font-weight: 300;
+    margin-bottom: 0;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-wa-card {
+    margin: 56px auto 0;
+    max-width: 600px;
+    padding: 48px 40px;
+    background: linear-gradient(165deg, var(--blip-gray-dark) 0%, rgba(0,150,250,0.06) 100%);
+    border: 1px solid rgba(0,150,250,0.25);
+    border-radius: 24px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+  }
+  .cta-wa-exec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .cta-wa-avatar {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blip-blue), var(--mp-blue));
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 20px; font-weight: 600;
+    box-shadow: 0 0 0 3px rgba(0,150,250,0.2), 0 8px 24px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .cta-wa-exec-info { text-align: left; }
+  .cta-wa-exec-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--blip-white);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  .cta-wa-exec-role {
+    font-size: 12px;
+    color: var(--blip-gray-light);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+  .cta-wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 34px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+    transition: all 0.25s;
+    box-shadow: 0 12px 32px rgba(37,211,102,0.28);
+  }
+  .cta-wa-btn:hover {
+    background: #1eb255;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(37,211,102,0.4);
+  }
+  .cta-wa-btn-icon {
+    width: 22px; height: 22px;
+    fill: white;
+  }
+  .cta-wa-phone {
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--blip-gray-light);
+    letter-spacing: 0.06em;
+    font-weight: 400;
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- ============== PASSWORD GATE ============== -->
+<div class="gate" id="passwordGate">
+  <div class="gate-card" id="gateCard">
+    <div class="gate-brand">
+      <div class="gate-brand-mark"></div>
+      <span>Blip × Mercado Pago</span>
+    </div>
+    <div class="gate-eyebrow">Conteúdo restrito</div>
+    <h1 class="gate-title">Documento confidencial.</h1>
+    <p class="gate-sub">
+      Esta apresentação contém informações estratégicas da parceria Blip × Mercado Pago.
+      Insira a senha de acesso para continuar.
+    </p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <div class="gate-input-wrap">
+        <input
+          type="password"
+          class="gate-input"
+          id="gateInput"
+          placeholder="Digite a senha de acesso"
+          autocomplete="off"
+          autofocus
+        />
+        <button type="button" class="gate-toggle" id="gateToggle" aria-label="Mostrar senha">👁</button>
+      </div>
+      <div class="gate-error" id="gateError">Senha incorreta. Tente novamente.</div>
+      <button type="submit" class="gate-submit">
+        Acessar apresentação <span style="font-size: 16px;">→</span>
+      </button>
+    </form>
+    <div class="gate-foot">
+      Strategic Accounts · Apresentação confidencial · 2026
+    </div>
+  </div>
+</div>
+
+<!-- ============== NAVBAR ============== -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-brand-mark"></div>
+      <span>Mercado Pago × Blip · Visão de Futuro</span>
+    </div>
+    <div class="nav-links">
+      <a href="#momento" class="nav-link">Momento</a>
+      <a href="#pilares" class="nav-link">4 Pilares</a>
+      <a href="#hub" class="nav-link">Hub</a>
+      <a href="#moat" class="nav-link">Moat</a>
+      <a href="#workshop" class="nav-link">Workshop</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Próxima fase da parceria · 2026</div>
+    <h1>Da plataforma ao <span class="highlight">sistema operacional</span> conversacional do Mercado Pago.</h1>
+    <p class="hero-sub">
+      Um ano consolidando Go Personal. Agentes de IA com recorde de 12,4% de conversão em jan/26.
+      A pergunta da próxima fase não é mais <em>o que construir</em> — é <em>em que velocidade.</em>
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Apresentação</span>
+        <span class="hero-meta-value">Visão Multiagentes & Roadmap</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Foco</span>
+        <span class="hero-meta-value">4 Pilares · Fresh Start</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Parceiros</span>
+        <div class="hero-partners">
+          <div class="hero-partner-logo"><div class="dot" style="background: var(--blip-blue);"></div>Blip</div>
+          <div class="hero-partner-logo"><div class="dot" style="background: var(--mp-yellow);"></div>Mercado Pago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOMENTO ============== -->
+<section class="moment" id="momento">
+  <div class="container">
+    <div class="section-eyebrow">O momento</div>
+    <h2 class="section-title">Onde estamos hoje<br/>e o que muda na próxima fase.</h2>
+    <p class="section-lead">
+      Mercado Pago é uma das contas mais avançadas do nosso portfólio.
+      Saímos de workshops de qualificação em Q1/2025 para uma operação rodando agentes de IA, FAQ determinística,
+      Copilot e dashboards de logs em Q2/2026. Os números falam por si.
+    </p>
+
+    <div class="moment-grid">
+      <div class="moment-card">
+        <div class="moment-card-num">+126%</div>
+        <div class="moment-card-label">Clientes atendidos</div>
+        <div class="moment-card-desc">Volume Q4 vs Q1 — escala via Go Personal</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-card-num">+1M</div>
+        <div class="moment-card-label">Mensagens trafegadas</div>
+        <div class="moment-card-desc">2026, com governança e segurança</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-card-num">23%</div>
+        <div class="moment-card-label">Resposta às NAs</div>
+        <div class="moment-card-desc">Taxa média de notificações ativas</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-card-num">73%</div>
+        <div class="moment-card-label">Satisfação no canal</div>
+        <div class="moment-card-desc">CSAT do atendimento via WhatsApp</div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-card-num">12,4%</div>
+        <div class="moment-card-label">Recorde de conversão</div>
+        <div class="moment-card-desc">SDR de IA — janeiro/2026</div>
+      </div>
+    </div>
+
+    <div class="native-moat" style="margin-top: 56px; max-width: 820px;">
+      <strong>O ponto de inflexão</strong>
+      A parceria amadureceu o suficiente para deixar de ser projeto e virar plataforma.
+      O que vem agora não é uma feature a mais — é a arquitetura conversacional do MP organizada em 4 pilares
+      que conversam entre si, sob um único hub, com governança unificada e velocidade de iteração que a
+      construção interna leva trimestres para alcançar.
+    </div>
+  </div>
+</section>
+
+<!-- ============== PILLARS OVERVIEW ============== -->
+<section class="pillars-overview" id="pilares">
+  <div class="container">
+    <div class="section-eyebrow">Os 4 pilares</div>
+    <h2 class="section-title">Quatro frentes,<br/>um sistema integrado.</h2>
+    <p class="section-lead">
+      Cada pilar resolve uma dor específica da operação MP — aquisição, retenção, engajamento e finalização —
+      mas só geram alavancagem real quando funcionam como um único orquestrador. É o que vamos detalhar a seguir.
+    </p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">PILAR 01</div>
+        <div class="pillar-name">Hunting Multi-agents</div>
+        <div class="pillar-tagline">
+          Agentes especializados por jornada de compra (educar, comparar, upgrade, switching),
+          com bundle inteligente do ecossistema MP no momento da conversão.
+        </div>
+        <span class="pillar-tag">Aquisição · Conversão</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">PILAR 02</div>
+        <div class="pillar-name">Farming Multi-agents</div>
+        <div class="pillar-tagline">
+          Renegociação de inadimplência, TPV Coach proativo, Account Manager virtual para a long tail
+          e educação financeira para o seller.
+        </div>
+        <span class="pillar-tag farming">Retenção · Engajamento</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">PILAR 03</div>
+        <div class="pillar-name">Orquestração + RCS</div>
+        <div class="pillar-tagline">
+          Decisão dinâmica entre Push, SMS, WhatsApp e RCS por canal certo no momento certo.
+          RCS como o canal de descoberta visual do MP.
+        </div>
+        <span class="pillar-tag">Multicanal · Reativação</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">PILAR 04</div>
+        <div class="pillar-name">Pagamento MP integrado</div>
+        <div class="pillar-tagline">
+          Gateway MP nativo no Blip Payments. Checkout 1-clique, parcelamento conversacional,
+          NF e ativação automática — tudo dentro do chat.
+        </div>
+        <span class="pillar-tag farming">Conversão · Zero fricção</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PILAR 01 — HUNTING ============== -->
+<section class="pillar-detail">
+  <div class="container">
+    <div class="pillar-header">
+      <div class="pillar-header-left">
+        <div class="section-eyebrow">Pilar 01 · Hunting Multi-agents</div>
+        <h2>Especialização que converte. Bundle que multiplica LTV.</h2>
+      </div>
+      <div class="pillar-header-meta">
+        <span class="pillar-meta-chip hunting">Aquisição</span>
+        <span class="pillar-meta-chip">Conversão</span>
+        <span class="pillar-meta-chip">Cross-sell</span>
+      </div>
+    </div>
+
+    <div class="pillar-split">
+      <div class="pillar-state">
+        <div class="pillar-state-label">Hoje</div>
+        <div class="pillar-state-title">Um agente SDR generalista</div>
+        <ul class="pillar-state-list">
+          <li>Mesmo agente para qualquer perfil entrando no funil</li>
+          <li>Vende apenas a maquininha — sem visão do bundle MP</li>
+          <li>Qualificação textual livre, com drop-off alto antes da conversão</li>
+          <li>Reabordagem de não-comprou em régua genérica de remarketing</li>
+        </ul>
+      </div>
+
+      <div class="pillar-state future">
+        <div class="pillar-state-label">Visão V2</div>
+        <div class="pillar-state-title">Squad de agentes por jornada</div>
+        <ul class="pillar-state-list">
+          <li><strong>Agente Educator</strong> — para MEI iniciante que nunca teve maquininha</li>
+          <li><strong>Agente Comparador</strong> — para quem está entre Stone, PagBank, Cielo, MP</li>
+          <li><strong>Agente Upgrade</strong> — cliente MP atual evoluindo para Point Pro/Smart</li>
+          <li><strong>Agente Switcher</strong> — vindo de concorrente, com argumentos específicos</li>
+          <li class="highlight">
+            <strong>Agente Bundle Inteligente</strong> — oferece maquininha + Mercado Crédito + Conta MP no mesmo fluxo, multiplicando ticket médio e aprofundando LTV
+            <span class="ref">expansão proposta com base nas conversas estratégicas</span>
+          </li>
+          <li><strong>Pré-qualificação por dados em background</strong> — CNPJ, score MP, TPV potencial, antes de chegar ao agente</li>
+          <li><strong>Reabordagem por motivo de objeção</strong> — quem não comprou volta para o agente especializado naquela objeção</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar-metrics">
+      <div class="metric-item">
+        <div class="metric-label">Métrica âncora</div>
+        <div class="metric-value">Lift sobre 12,4% (recorde atual)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">TPV ampliado</div>
+        <div class="metric-value">Ticket médio com bundle</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Funil enriquecido</div>
+        <div class="metric-value">% de leads com TPV potencial</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Reativação</div>
+        <div class="metric-value">% recuperado por objeção</div>
+      </div>
+    </div>
+
+    <div class="native-moat">
+      <strong>Moat WhatsApp-native acionado</strong>
+      Pré-qualificação via <em>WhatsApp Flows</em> nativos (formulário estruturado dentro do chat, sem sair pra app).
+      Catálogo de maquininhas via <em>Carrossel</em> e <em>List Message</em> — componentes que o agente gera dinamicamente
+      em runtime via Blip Studio. Roteamento contextual entre agentes sem perder contexto de conversa.
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP HUNTING ============== -->
+<section class="mockup-section">
+  <div class="container">
+    <div class="mockup-header">
+      <div class="section-eyebrow">Mockup interativo · Pilar 01</div>
+      <h2>Hunting em ação: agente especializado + bundle no chat.</h2>
+      <p>Componentes 100% nativos do WhatsApp — Reply Buttons, Lista interativa, Carrossel.</p>
+    </div>
+
+    <div class="mockup-stage">
+      <div class="mockup-narration">
+        <div class="narration-item">
+          <strong>Cena 1 · Roteamento</strong>
+          O agente Bundle Inteligente assume após pré-qualificação por TPV/CNPJ em background.
+        </div>
+        <div class="narration-item">
+          <strong>Cena 2 · Catálogo dinâmico</strong>
+          Agente gera carrossel com maquininhas filtradas por perfil de venda do seller.
+        </div>
+        <div class="narration-item">
+          <strong>Cena 3 · Cross-sell</strong>
+          Após escolha do device, agente oferece Mercado Crédito + Conta MP em um único fluxo.
+        </div>
+        <div class="narration-item">
+          <strong>Cena 4 · Handoff</strong>
+          Cliente avança para o Pilar 04 (checkout no chat) sem trocar de canal.
+        </div>
+      </div>
+
+      <div class="wa-phone">
+        <div class="wa-notch"></div>
+        <div class="wa-phone-screen">
+          <div class="wa-header">
+            <span class="wa-back">‹</span>
+            <div class="wa-avatar">MP</div>
+            <div class="wa-contact-info">
+              <div class="wa-contact-name">Mercado Pago <span class="wa-verified">✓</span></div>
+              <div class="wa-contact-status">online</div>
+            </div>
+            <div class="wa-icons">
+              <span>📞</span><span>⋮</span>
+            </div>
+          </div>
+          <div class="wa-body" id="waBody1">
+            <!-- mensagens injetadas via JS -->
+          </div>
+          <div class="wa-input">
+            <div class="wa-input-field">😊 &nbsp;Mensagem</div>
+            <div class="wa-input-mic">🎤</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-controls">
+      <button class="mockup-btn" onclick="playWhatsAppHunting()">▶ Reproduzir conversa</button>
+      <button class="mockup-btn" onclick="resetWhatsAppHunting()">↻ Resetar</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PILAR 02 — FARMING ============== -->
+<section class="pillar-detail alt">
+  <div class="container">
+    <div class="pillar-header">
+      <div class="pillar-header-left">
+        <div class="section-eyebrow">Pilar 02 · Farming Multi-agents</div>
+        <h2>Reter é o novo crescer.<br/>Renegociação, engajamento e antichurn.</h2>
+      </div>
+      <div class="pillar-header-meta">
+        <span class="pillar-meta-chip farming">Retenção</span>
+        <span class="pillar-meta-chip">Inadimplência</span>
+        <span class="pillar-meta-chip">Engajamento</span>
+      </div>
+    </div>
+
+    <div class="pillar-split">
+      <div class="pillar-state">
+        <div class="pillar-state-label">Hoje</div>
+        <div class="pillar-state-title">FAQ Agent + régua de engajamento</div>
+        <ul class="pillar-state-list">
+          <li>Atendimento reativo — espera o seller chegar</li>
+          <li>Sem detecção proativa de queda de TPV</li>
+          <li>Long tail (sellers sem gerente humano) sem cobertura consultiva</li>
+          <li>Templates genéricos de reengajamento</li>
+        </ul>
+      </div>
+
+      <div class="pillar-state future">
+        <div class="pillar-state-label">Visão V2</div>
+        <div class="pillar-state-title">Squad de farming proativa</div>
+        <ul class="pillar-state-list">
+          <li class="highlight">
+            <strong>Agente de Renegociação / Inadimplência</strong> — sellers com Mercado Crédito vencido recebem oferta personalizada de parcelamento via chat. Agente conduz a negociação, fecha acordo, dispara cobrança.
+            <span class="ref">case que mais impressionou Rafael — recuperando da reunião interna de prep</span>
+          </li>
+          <li><strong>Agente TPV Coach</strong> — detecta queda de produção em sellers carteirizados e abre conversa antes do churn ("Vi que sua produção caiu 30% nas últimas 2 semanas — quer entender o motivo?")</li>
+          <li><strong>Account Manager Virtual</strong> — escala o relacionamento high-touch para a long tail. Revisa performance mensal, sugere ações, oferece produtos, agenda humano quando necessário</li>
+          <li><strong>Agente de Educação Financeira/Tributária</strong> — DAS, fluxo de caixa, separação PF/PJ. Resolve a dor real do MEI/PJ e posiciona MP como parceiro, não fornecedor</li>
+          <li><strong>Recomendação por sinal de comportamento</strong> — quem está pronto para Point Pro, quem deveria ativar Mercado Crédito, quem precisa do app de gestão</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar-metrics">
+      <div class="metric-item">
+        <div class="metric-label">Anti-churn</div>
+        <div class="metric-value">Taxa de reversão de pré-churn</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Recuperação</div>
+        <div class="metric-value">Inadimplência regularizada via chat</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Engajamento</div>
+        <div class="metric-value">Sessões por seller / mês</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">CSAT</div>
+        <div class="metric-value">Satisfação do farming</div>
+      </div>
+    </div>
+
+    <div class="native-moat">
+      <strong>Moat WhatsApp-native acionado</strong>
+      Notificações ativas com templates pré-aprovados pela Meta + Reply Buttons para resposta de 1 toque.
+      Roteamento entre agentes sem perda de contexto. Integração com dados do CRM MP em runtime para oferta personalizada
+      de parcelamento. Studio chamando flows de cobrança parametrizáveis no meio da conversa.
+    </div>
+
+    <div class="external-ref">
+      <strong>Validação externa do canal:</strong>
+      Caso publicado no blog da própria Blip — Totalplay (México) usou RCS Business Messaging para campanha de cobrança
+      ("Cobranza RS"). Três meses após o lançamento, taxas de resposta do cliente subiram 78% em comparação com SMS,
+      e cobranças efetivas aumentaram 65%. Demonstra a tração do canal conversacional para inadimplência —
+      e o caso do Rafael endereça exatamente esse vetor no MP.
+      <em>Fonte: blip.ai/blog/tecnologia/google-rcs</em>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PILAR 03 — RCS ============== -->
+<section class="pillar-detail">
+  <div class="container">
+    <div class="pillar-header">
+      <div class="pillar-header-left">
+        <div class="section-eyebrow">Pilar 03 · Orquestração + RCS</div>
+        <h2>Não é régua. É orquestração inteligente entre canais.</h2>
+      </div>
+      <div class="pillar-header-meta">
+        <span class="pillar-meta-chip hunting">Multicanal</span>
+        <span class="pillar-meta-chip">RCS</span>
+        <span class="pillar-meta-chip">Reativação</span>
+      </div>
+    </div>
+
+    <div class="pillar-split">
+      <div class="pillar-state">
+        <div class="pillar-state-label">Hoje</div>
+        <div class="pillar-state-title">Notificações Ativas com 23% de resposta</div>
+        <ul class="pillar-state-list">
+          <li>Régua linear de disparos por WhatsApp</li>
+          <li>Carrinho abandonado em mensagem genérica, sem entender em que fase abandonou</li>
+          <li>Sem RCS — todo investimento concentrado num único canal</li>
+          <li>Reativação de inativos massificada, sem segmentação comportamental</li>
+        </ul>
+      </div>
+
+      <div class="pillar-state future">
+        <div class="pillar-state-label">Visão V2</div>
+        <div class="pillar-state-title">Orquestrador multicanal com decisão dinâmica</div>
+        <ul class="pillar-state-list">
+          <li><strong>Decisão em tempo real do canal certo</strong> — Push do app MP → fallback para SMS → WhatsApp → RCS, otimizado por taxa de engajamento individual</li>
+          <li class="highlight">
+            <strong>RCS como o "outdoor digital" do MP</strong> — rich cards com vídeo, comparador de taxas em card interativo, simulador de receita. O canal de descoberta visual de produto.
+            <span class="ref">Brasil tem cobertura RCS plena (Claro, Oi, TIM, Vivo) — fonte: GSMA / Sinch</span>
+          </li>
+          <li><strong>Carrinho abandonado com inteligência de fase</strong> — quem parou no pagamento vai para agente de financiamento; quem parou na escolha vai para o comparador</li>
+          <li><strong>Régua de reativação para inativos</strong> — sellers sem TPV há X dias recebem ofertas comportamentais (redução de taxa, kit marketing, conteúdo educativo)</li>
+          <li><strong>Co-investimento Google em RCS</strong> — posicionar MP como case nacional B2B, com PR e mídia compartilhada</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar-metrics">
+      <div class="metric-item">
+        <div class="metric-label">Conversão por template</div>
+        <div class="metric-value">Lift sobre os 23% atuais</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">CAC por canal</div>
+        <div class="metric-value">Custo otimizado por orquestração</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Carrinho recuperado</div>
+        <div class="metric-value">% por fase de abandono</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Reativação</div>
+        <div class="metric-value">Inativos retornando ao TPV</div>
+      </div>
+    </div>
+
+    <div class="native-moat">
+      <strong>Moat WhatsApp-native + parceria Google</strong>
+      Blip é parceiro Premium Meta para WhatsApp e habilitada como agente RCS no Brasil — operação dual sem duplicar
+      infraestrutura. Disparos sincronizados, métricas unificadas, e capacidade de A/B test de canal para a mesma audiência.
+    </div>
+  </div>
+</section>
+
+<!-- ============== RCS MOCKUP MINI ============== -->
+<section class="mockup-section" style="background: var(--blip-black);">
+  <div class="container">
+    <div class="mockup-header">
+      <div class="section-eyebrow">Como o RCS aparece para o seller</div>
+      <h2>Componentes nativos do Google Messages.</h2>
+      <p>Suggested replies, rich card com mídia e CTAs — identidade visual MP verificada.</p>
+    </div>
+
+    <div class="mockup-stage">
+      <div class="rcs-phone">
+        <div class="rcs-notch"></div>
+        <div class="rcs-screen">
+          <div class="rcs-header">
+            <span class="rcs-back">‹</span>
+            <div class="rcs-avatar">MP</div>
+            <div>
+              <div class="rcs-name-row">
+                <div class="rcs-name">Mercado Pago</div>
+                <span class="rcs-verified-badge">Verificado</span>
+              </div>
+              <div class="rcs-status">Empresa · resposta automática</div>
+            </div>
+          </div>
+          <div class="rcs-body">
+            <div class="rcs-msg-time" style="opacity: 1;">Hoje</div>
+
+            <div class="rcs-msg received" style="animation-delay: 0.2s;">
+              Olá, João! Sua Point Mini tem rodado bem. Que tal conhecer a <strong>Point Pro</strong>?
+              Ela aceita NFC, parcela em até 18x e processa o dobro de transações por dia.
+            </div>
+
+            <div class="rcs-card" style="animation-delay: 0.6s;">
+              <div class="rcs-card-media">
+                <span class="rcs-card-media-tag">Oferta Point Pro</span>
+                <div class="rcs-card-device-img">
+                  <div class="scr"></div>
+                  <div class="keys"></div>
+                </div>
+              </div>
+              <div class="rcs-card-content">
+                <div class="rcs-card-title">Point Pro · upgrade do seu device</div>
+                <div class="rcs-card-desc">Aceita Pix, crédito até 18x, NFC e contactless. Frete grátis para sellers ativos.</div>
+              </div>
+              <div class="rcs-card-actions">
+                <div class="rcs-card-action">Ver detalhes</div>
+                <div class="rcs-card-action">Comprar agora</div>
+              </div>
+            </div>
+
+            <div class="rcs-chips" style="animation-delay: 1s;">
+              <button class="rcs-chip">Quero saber mais</button>
+              <button class="rcs-chip">Comparar com a minha</button>
+              <button class="rcs-chip">Agora não</button>
+            </div>
+          </div>
+          <div class="rcs-input">
+            <div class="rcs-input-field">Mensagem RCS</div>
+            <div class="rcs-input-send">➤</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup-narration">
+        <div class="narration-item">
+          <strong>Verified Sender</strong>
+          Logo MP, nome verificado e selo azul — credibilidade que o SMS não entrega.
+        </div>
+        <div class="narration-item">
+          <strong>Rich Card</strong>
+          Mídia, descrição e múltiplos CTAs num só componente. Conversão visual.
+        </div>
+        <div class="narration-item">
+          <strong>Suggested Replies</strong>
+          Resposta de 1 toque. Reduz fricção e abre dados de intenção do seller.
+        </div>
+        <div class="narration-item">
+          <strong>Fallback inteligente</strong>
+          Quem não tem RCS recebe SMS com link curto. Quem responde, sobe para WhatsApp via orquestrador.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PILAR 04 — PAYMENTS ============== -->
+<section class="pillar-detail alt">
+  <div class="container">
+    <div class="pillar-header">
+      <div class="pillar-header-left">
+        <div class="section-eyebrow">Pilar 04 · Pagamento MP integrado</div>
+        <h2>Do link externo ao checkout dentro do chat.</h2>
+      </div>
+      <div class="pillar-header-meta">
+        <span class="pillar-meta-chip farming">Conversão</span>
+        <span class="pillar-meta-chip">Zero fricção</span>
+        <span class="pillar-meta-chip">Tracking</span>
+      </div>
+    </div>
+
+    <div class="pillar-split">
+      <div class="pillar-state">
+        <div class="pillar-state-label">Hoje</div>
+        <div class="pillar-state-title">Funnel quebra no link externo</div>
+        <ul class="pillar-state-list">
+          <li>Agente coleta dados → envia link do gateway MP</li>
+          <li>Cliente sai do WhatsApp para finalizar a compra</li>
+          <li>Sem retorno, sem rastreamento, sem follow-up automático</li>
+          <li>Cada etapa de drop-off invisível para o time</li>
+        </ul>
+      </div>
+
+      <div class="pillar-state future">
+        <div class="pillar-state-label">Visão V2</div>
+        <div class="pillar-state-title">Gateway MP nativo no Blip Payments</div>
+        <ul class="pillar-state-list">
+          <li><strong>Checkout 1-clique para sellers recorrentes</strong> — cartão tokenizado, dados validados, próxima maquininha em 30 segundos</li>
+          <li><strong>Parcelamento conversacional</strong> — agente negocia "12x com 2,3% ou 6x sem juros — qual prefere?" e fecha no chat</li>
+          <li><strong>NF + ativação automática no chat</strong> — pagou, nota cai, instruções aparecem, agente acompanha primeira venda</li>
+          <li><strong>Tracking 100%</strong> — cada step mensurado, drop-off por fase, ROI direto por jornada</li>
+          <li><strong>Valor cai direto na conta MP do seller</strong> — sem intermediação financeira, sem retenção, sem fricção regulatória</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar-metrics">
+      <div class="metric-item">
+        <div class="metric-label">Conversão checkout</div>
+        <div class="metric-value">Lift vs link externo</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Drop-off por fase</div>
+        <div class="metric-value">Mensurável fim a fim</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Tempo do funil</div>
+        <div class="metric-value">Entrada → ativação</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Recorrência</div>
+        <div class="metric-value">Repurchase via 1-clique</div>
+      </div>
+    </div>
+
+    <div class="native-moat">
+      <strong>Moat técnico exclusivo</strong>
+      Integração nativa entre Blip Payments e gateway MP só é viável dentro de uma plataforma WhatsApp-native que já
+      tem a relação Premium Meta resolvida. Em construção própria, o cliente lida com homologação Meta para pagamentos,
+      certificação de gateway, compliance, e governança — caminho de meses até go-live.
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOCKUP CHECKOUT ============== -->
+<section class="mockup-section">
+  <div class="container">
+    <div class="mockup-header">
+      <div class="section-eyebrow">Mockup interativo · Pilar 04</div>
+      <h2>Checkout 1-clique dentro do WhatsApp.</h2>
+      <p>Cartão tokenizado, parcelamento negociado pelo agente, NF + ativação no chat.</p>
+    </div>
+
+    <div class="mockup-stage">
+      <div class="mockup-narration">
+        <div class="narration-item">
+          <strong>Cena 1 · Seller recorrente</strong>
+          Cliente já comprou Point Mini. Agente reconhece, oferece upgrade Point Pro.
+        </div>
+        <div class="narration-item">
+          <strong>Cena 2 · Negociação no chat</strong>
+          Agente apresenta opções de parcelamento como Reply Buttons.
+        </div>
+        <div class="narration-item">
+          <strong>Cena 3 · Pagamento 1-clique</strong>
+          Cartão tokenizado MP — confirma e pronto.
+        </div>
+        <div class="narration-item">
+          <strong>Cena 4 · NF + ativação</strong>
+          Nota fiscal e instruções de ativação caem no próprio chat. Sem e-mail, sem app.
+        </div>
+      </div>
+
+      <div class="wa-phone">
+        <div class="wa-notch"></div>
+        <div class="wa-phone-screen">
+          <div class="wa-header">
+            <span class="wa-back">‹</span>
+            <div class="wa-avatar">MP</div>
+            <div class="wa-contact-info">
+              <div class="wa-contact-name">Mercado Pago <span class="wa-verified">✓</span></div>
+              <div class="wa-contact-status">online</div>
+            </div>
+            <div class="wa-icons"><span>📞</span><span>⋮</span></div>
+          </div>
+          <div class="wa-body" id="waBody2">
+            <!-- mensagens injetadas via JS -->
+          </div>
+          <div class="wa-input">
+            <div class="wa-input-field">😊 &nbsp;Mensagem</div>
+            <div class="wa-input-mic">🎤</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-controls">
+      <button class="mockup-btn" onclick="playWhatsAppCheckout()">▶ Reproduzir conversa</button>
+      <button class="mockup-btn" onclick="resetWhatsAppCheckout()">↻ Resetar</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============== HUB CONVERSACIONAL ============== -->
+<section class="hub" id="hub">
+  <div class="container">
+    <div class="section-eyebrow" style="display: inline-flex; justify-content: center;">Visão integrada</div>
+    <h2 class="section-title" style="text-align: center;">Hub Conversacional MP.</h2>
+    <p class="section-lead" style="margin: 0 auto; text-align: center;">
+      Os 4 pilares não são projetos paralelos — são camadas de um único orquestrador.
+      Mesmo contexto de cliente. Mesmas métricas. Mesma governança. Quatro frentes alimentando uma só inteligência conversacional.
+    </p>
+
+    <div class="hub-graph">
+      <div class="hub-line" style="top: 20%; left: 26%; width: 22%; transform: rotate(20deg);"></div>
+      <div class="hub-line" style="top: 20%; right: 26%; width: 22%; transform: rotate(-20deg);"></div>
+      <div class="hub-line" style="bottom: 20%; left: 26%; width: 22%; transform: rotate(-20deg);"></div>
+      <div class="hub-line" style="bottom: 20%; right: 26%; width: 22%; transform: rotate(20deg);"></div>
+
+      <div class="hub-center">
+        <div class="hub-center-label">Hub MP</div>
+        <div class="hub-center-title">Inteligência<br/>conversacional</div>
+        <div class="hub-center-sub">contexto unificado</div>
+      </div>
+
+      <div class="hub-node n1">
+        <div class="hub-node-num">PILAR 01</div>
+        <div class="hub-node-title">Hunting Multi-agents — entrada e bundle</div>
+      </div>
+      <div class="hub-node n2">
+        <div class="hub-node-num">PILAR 02</div>
+        <div class="hub-node-title">Farming Multi-agents — retenção e antichurn</div>
+      </div>
+      <div class="hub-node n3">
+        <div class="hub-node-num">PILAR 03</div>
+        <div class="hub-node-title">Orquestração + RCS — canal certo, momento certo</div>
+      </div>
+      <div class="hub-node n4">
+        <div class="hub-node-num">PILAR 04</div>
+        <div class="hub-node-title">Pagamento integrado — checkout no chat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MOAT TECH ============== -->
+<section class="moat" id="moat">
+  <div class="container">
+    <div class="section-eyebrow">Por que Blip e não construir do zero</div>
+    <h2 class="section-title">O que só uma plataforma<br/>WhatsApp-native entrega.</h2>
+    <p class="section-lead">
+      A discussão "build vs buy" não é sobre capacidade técnica do MP — é sobre tempo até o valor.
+      Cada item abaixo é uma barreira de meses de desenvolvimento, certificação e relação com a Meta que a Blip já resolveu.
+    </p>
+
+    <div class="moat-grid">
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h10"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">Botões e listas dinâmicas em runtime</div>
+          <div class="moat-desc">Agentes do Studio geram componentes nativos WA na hora, sem template fixo</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">WhatsApp Flows mid-conversation</div>
+          <div class="moat-desc">Formulários estruturados acionados pelo agente em qualquer ponto do fluxo</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">COEX — Business + API coexistindo</div>
+          <div class="moat-desc">Conexão da Meta que permite o Business pessoal rodar lado a lado com o número API</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M6 14h4"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">Gateway de pagamento integrado</div>
+          <div class="moat-desc">Blip Payments com hooks nativos para integração de gateways como o do MP</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">Templates com prioridade Meta</div>
+          <div class="moat-desc">Aprovação acelerada e volume garantido como Premium Partner</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><polyline points="3 6 9 12 3 18"/><polyline points="21 6 15 12 21 18"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">Acesso à roadmap Meta</div>
+          <div class="moat-desc">Voz ativa em features beta como Premium Partner, antes do mercado</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">Time-to-Value comprimido</div>
+          <div class="moat-desc">Pilares no ar em ciclos curtos — não em trimestres de homologação interna</div>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0096FA" stroke-width="2"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-1.5 0-3-.4-4.3-1.1L3 21l1.1-4.7C3.4 15 3 13.5 3 12z"/></svg>
+        </div>
+        <div class="moat-text">
+          <div class="moat-title">Squad dedicada como extensão</div>
+          <div class="moat-desc">4 devs + 4 conversational designers + 1 data analyst alocados, em ritual contínuo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== NEXT STEPS ============== -->
+<section class="next-steps" id="workshop">
+  <div class="container-narrow">
+    <div class="section-eyebrow" style="display: inline-flex;">Próximo passo</div>
+    <h2 class="section-title">De apresentação a workshop.</h2>
+    <p class="section-lead" style="margin: 0 auto;">
+      Esses 4 pilares são o ponto de partida. Para detalhar escopo, cronograma, métricas-âncora e ROI esperado por frente,
+      propomos um workshop dedicado com o time MP.
+    </p>
+
+    <div class="next-cta-card">
+      <div class="next-cta-title">Workshop "Fresh Start MP × Blip"</div>
+      <div class="next-cta-desc">
+        Sessão de imersão para co-construir o roadmap dos 4 pilares com squad técnico, produto e business
+        do MP — saindo com escopo, prioridades e marcos de entrega definidos.
+      </div>
+
+      <div class="next-tracks">
+        <div class="next-track">
+          <div class="next-track-num">TRACK 01</div>
+          <div class="next-track-title">Aprofundamento de personas e jornadas para os agentes especializados</div>
+        </div>
+        <div class="next-track">
+          <div class="next-track-num">TRACK 02</div>
+          <div class="next-track-title">Integração de dados MP × Blip (CRM, score, TPV)</div>
+        </div>
+        <div class="next-track">
+          <div class="next-track-num">TRACK 03</div>
+          <div class="next-track-title">Plano de adoção do RCS e estrutura A/B com Google</div>
+        </div>
+        <div class="next-track">
+          <div class="next-track-num">TRACK 04</div>
+          <div class="next-track-title">Arquitetura técnica do gateway MP no Blip Payments</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== YDUQS CASE ============== -->
+<section class="case-yduqs">
+  <div class="container">
+    <div class="section-eyebrow">Caso real · Estado da arte</div>
+    <h2 class="section-title">Case YDUQS · A profundidade<br/>que estamos entregando hoje.</h2>
+    <p class="section-lead">
+      O que vem a seguir não é promessa — é a evolução natural do que já está rodando em outra Strategic Account
+      do segmento de Educação. Veja como a Blip transformou a operação digital da YDUQS em estado da arte de IA conversacional.
+    </p>
+
+    <div class="case-video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/HeqIjXirsAk?start=4&amp;rel=0"
+        title="Case Blip × YDUQS"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="case-columns">
+      <div class="case-col">
+        <div class="case-col-label">O que já provamos juntos</div>
+        <ul class="case-list">
+          <li>90% das matrículas da Estácio com touchpoint WhatsApp</li>
+          <li>74% de matrículas automáticas via IA — sem humano</li>
+          <li>Retenção no fluxo de IA saltou de 43% para 84,65%</li>
+          <li>95% de inscrições via bot no pico pós-BBB (74k entrantes/dia)</li>
+          <li>15% de redução no CAC ao longo de 2025</li>
+          <li>Case oficial da Meta para WhatsApp Business</li>
+          <li>R$ 1,1M de economia projetada com automação em 2026</li>
+        </ul>
+      </div>
+
+      <div class="case-col future">
+        <div class="case-col-label">Para onde vamos juntos</div>
+        <ul class="case-future-list">
+          <li class="case-future-item">
+            <div class="case-future-title">Evasão &amp; Renovação</div>
+            <div class="case-future-desc">Onboarding ativo, early warning com IA, reativação de calouros não engajados.</div>
+            <span class="case-future-impact">~R$ 14M/ano preservados</span>
+          </li>
+          <li class="case-future-item">
+            <div class="case-future-title">Inadimplência &amp; PDD</div>
+            <div class="case-future-desc">Renegociação conversacional end-to-end, lembretes inteligentes, Pix com desconto no WhatsApp.</div>
+            <span class="case-future-impact">–1 p.p. PDD ≈ R$ 55M</span>
+          </li>
+          <li class="case-future-item">
+            <div class="case-future-title">Escala Semipresencial</div>
+            <div class="case-future-desc">Lia Polos: captação consultiva com IA para 2.000+ polos, tombamento unificado para Blip.</div>
+            <span class="case-future-impact">Escala sem custo linear</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-quote">
+      <strong>"Salesforce é o cofre. Blip é a mina."</strong>
+      Não substituímos o CRM. Alimentamos ele com o dado mais valioso: a conversa com o aluno.
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHATSAPP CTA ============== -->
+<section class="cta-wa">
+  <div class="container-narrow">
+    <div class="section-eyebrow" style="display: inline-flex;">Vamos conversar</div>
+    <h2 class="cta-wa-title">A próxima conversa<br/>está a um clique.</h2>
+    <p class="cta-wa-desc">
+      Para detalhar qualquer um dos pilares, agendar o workshop ou abrir uma frente nova — fala direto com a executiva da conta.
+    </p>
+
+    <div class="cta-wa-card">
+      <div class="cta-wa-exec">
+        <div class="cta-wa-avatar">LO</div>
+        <div class="cta-wa-exec-info">
+          <div class="cta-wa-exec-name">Liza Oshima</div>
+          <div class="cta-wa-exec-role">Strategic Account Executive · Mercado Pago</div>
+        </div>
+      </div>
+
+      <a class="cta-wa-btn"
+         href="https://wa.me/5511994296706?text=Ol%C3%A1%20Liza%2C%20vim%20pela%20apresenta%C3%A7%C3%A3o%20Blip%20%C3%97%20Mercado%20Pago%20e%20gostaria%20de%20continuar%20a%20conversa."
+         target="_blank"
+         rel="noopener">
+        <svg class="cta-wa-btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Conversar pelo WhatsApp
+      </a>
+
+      <div class="cta-wa-phone">+55 (11) 99429-6706</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">Blip × Mercado Pago · Visão de Futuro 2026</div>
+    <div class="footer-meta">Strategic Accounts · Apresentação confidencial</div>
+  </div>
+</footer>
+
+<script>
+/* ============== PASSWORD GATE ============== */
+(function() {
+  const PASSWORD = 'MERCADOPAGO&BLIPVISAO2100';
+  const STORAGE_KEY = 'mp_blip_gate_unlocked_v1';
+
+  const gate = document.getElementById('passwordGate');
+  const card = document.getElementById('gateCard');
+  const form = document.getElementById('gateForm');
+  const input = document.getElementById('gateInput');
+  const errorEl = document.getElementById('gateError');
+  const toggle = document.getElementById('gateToggle');
+
+  // Já desbloqueado nesta sessão? Pula direto.
+  try {
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+      unlock(true);
+      return;
+    }
+  } catch (e) { /* sessionStorage indisponível — segue */ }
+
+  // Toggle mostrar/esconder senha
+  toggle.addEventListener('click', () => {
+    if (input.type === 'password') {
+      input.type = 'text';
+      toggle.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      toggle.textContent = '👁';
+    }
+    input.focus();
+  });
+
+  // Limpa erro quando começa a digitar de novo
+  input.addEventListener('input', () => {
+    errorEl.classList.remove('show');
+    input.classList.remove('error');
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const value = input.value;
+    if (value === PASSWORD) {
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+      unlock(false);
+    } else {
+      errorEl.classList.add('show');
+      input.classList.add('error');
+      card.classList.remove('shake');
+      // re-trigger animation
+      void card.offsetWidth;
+      card.classList.add('shake');
+      input.select();
+    }
+  });
+
+  function unlock(immediate) {
+    if (immediate) {
+      gate.style.transition = 'none';
+      gate.classList.add('hidden');
+      document.body.classList.remove('locked');
+      // remove gate from DOM after a tick to free up focus
+      setTimeout(() => gate.remove(), 50);
+    } else {
+      gate.classList.add('hidden');
+      document.body.classList.remove('locked');
+      setTimeout(() => gate.remove(), 600);
+    }
+  }
+})();
+
+/* ============== FADE IN ON SCROLL ============== */
+document.querySelectorAll('section').forEach(s => {
+  s.querySelectorAll('.section-title, .section-lead, .pillar-card, .moment-card, .moat-item, .hub-node, .next-track, .pillar-state, .pillar-metrics, .native-moat, .external-ref, .pillar-header')
+   .forEach(el => el.classList.add('fade-in'));
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+/* ============== WHATSAPP MOCKUP — HUNTING ============== */
+function timeNow() {
+  const d = new Date();
+  return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+}
+
+const huntingScript = [
+  { type: 'received', text: 'Olá, João! 👋 Vi que você visitou nossa página da Point Pro. Tudo bem?', delay: 600 },
+  { type: 'sent', text: 'Tudo. Ainda tô na dúvida entre umas opções. Hoje uso uma maquininha da concorrência.', delay: 1500 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: 'Perfeito. Vou te chamar de "Switcher" — sou especialista em quem está mudando de provedor. Posso te mostrar 3 opções com base no que você processa hoje?', delay: 1800 },
+  { type: 'reply-buttons', buttons: ['Sim, mostra', 'Antes, comparar taxas', 'Mais tarde'], delay: 1000 },
+  { type: 'sent', text: 'Sim, mostra', delay: 1200 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: 'Aqui estão as 3 opções selecionadas para o seu perfil de TPV:', delay: 1200 },
+  { type: 'carousel', delay: 600,
+    cards: [
+      { variant: 'point-mini', title: 'Point Mini', desc: 'Crédito até 12x · Pix · ideal pra começar', cta: 'Quero esta' },
+      { variant: 'point-pro', title: 'Point Pro', desc: 'Crédito 18x · NFC · contactless · mais usada', cta: 'Quero esta' },
+      { variant: 'point-smart', title: 'Point Smart', desc: 'Tela touch · apps · gestão integrada', cta: 'Quero esta' }
+    ]
+  },
+  { type: 'sent', text: 'Quero a Point Pro', delay: 2000 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: 'Excelente escolha! 🎯 Antes de fechar — como você usa Mercado Crédito hoje? Posso liberar uma oferta combinada com a maquininha.', delay: 1600 },
+  { type: 'reply-buttons', buttons: ['Não uso ainda', 'Já tenho', 'Me explica melhor'], delay: 1000 },
+  { type: 'sent', text: 'Não uso ainda', delay: 1200 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: 'Combo pré-aprovado para você: 🔵 Point Pro + 🔵 Mercado Crédito + 🔵 Conta MP. Tudo no mesmo cadastro, sem nova análise.', delay: 1600 },
+  { type: 'reply-buttons', buttons: ['Quero o combo', 'Só a maquininha', 'Falar com um humano'], delay: 800 }
+];
+
+let huntingTimer = null;
+function playWhatsAppHunting() {
+  resetWhatsAppHunting();
+  const body = document.getElementById('waBody1');
+  let i = 0;
+  function next() {
+    if (i >= huntingScript.length) return;
+    const step = huntingScript[i];
+    setTimeout(() => {
+      // remove typing if present
+      const t = body.querySelector('.wa-typing');
+      if (t) t.remove();
+
+      if (step.type === 'received' || step.type === 'sent') {
+        const div = document.createElement('div');
+        div.className = 'wa-msg ' + step.type;
+        const checks = step.type === 'sent' ? '<span class="checks">✓✓</span>' : '';
+        div.innerHTML = step.text + ' <span class="wa-time">' + timeNow() + checks + '</span>';
+        body.appendChild(div);
+      } else if (step.type === 'typing') {
+        const div = document.createElement('div');
+        div.className = 'wa-typing';
+        div.innerHTML = '<span></span><span></span><span></span>';
+        body.appendChild(div);
+      } else if (step.type === 'reply-buttons') {
+        const wrap = document.createElement('div');
+        wrap.className = 'wa-reply-buttons';
+        step.buttons.forEach(b => {
+          const btn = document.createElement('button');
+          btn.className = 'wa-reply-btn';
+          btn.textContent = b;
+          wrap.appendChild(btn);
+        });
+        body.appendChild(wrap);
+      } else if (step.type === 'carousel') {
+        const car = document.createElement('div');
+        car.className = 'wa-carousel';
+        step.cards.forEach(c => {
+          const card = document.createElement('div');
+          card.className = 'wa-card';
+          card.innerHTML = `
+            <div class="wa-card-img ${c.variant}">
+              <div class="wa-card-device">
+                <div class="wa-card-device-screen"></div>
+                <div class="wa-card-device-keys"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="wa-card-body">
+              <div class="wa-card-title">${c.title}</div>
+              <div class="wa-card-desc">${c.desc}</div>
+            </div>
+            <div class="wa-card-cta">${c.cta}</div>
+          `;
+          car.appendChild(card);
+        });
+        body.appendChild(car);
+      }
+      body.scrollTop = body.scrollHeight;
+      i++;
+      huntingTimer = setTimeout(next, 0);
+    }, step.delay);
+  }
+  next();
+}
+function resetWhatsAppHunting() {
+  if (huntingTimer) clearTimeout(huntingTimer);
+  document.getElementById('waBody1').innerHTML = '';
+}
+
+/* ============== WHATSAPP MOCKUP — CHECKOUT ============== */
+const checkoutScript = [
+  { type: 'received', text: 'Oi, João! 👋 Vi que sua Point Mini bateu R$ 18k em transações esse mês — produção subindo. Quer dar upgrade pra Point Pro? Continua no mesmo cadastro.', delay: 600 },
+  { type: 'reply-buttons', buttons: ['Quero saber mais', 'Comprar agora', 'Mais tarde'], delay: 1000 },
+  { type: 'sent', text: 'Comprar agora', delay: 1500 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: 'Show. 🎯 Como você quer pagar? Posso usar o cartão final 4321 que está cadastrado na sua conta MP.', delay: 1500 },
+  { type: 'reply-buttons', buttons: ['12x com 2,3% a.m.', '6x sem juros', 'À vista (-5%)'], delay: 1000 },
+  { type: 'sent', text: '6x sem juros', delay: 1500 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: '<strong>Resumo do pedido</strong><br/>Point Pro · R$ 348,00<br/>6x de R$ 58,00 sem juros<br/>Cartão final 4321<br/>Entrega: 2 dias úteis', delay: 1500 },
+  { type: 'reply-buttons', buttons: ['✓ Confirmar compra', 'Trocar cartão', 'Cancelar'], delay: 1000 },
+  { type: 'sent', text: '✓ Confirmar compra', delay: 1500 },
+  { type: 'typing', delay: 800 },
+  { type: 'received', text: '✅ Pagamento aprovado! Sua Point Pro saiu para entrega.<br/>Em 2 dias ela chega no endereço cadastrado. Vou te avisar quando chegar e te ajudar com a primeira venda. 💪', delay: 1500 },
+  { type: 'received', text: '📄 Nota fiscal: NF-e #4582193 (anexo)<br/>📲 Instruções de ativação chegam aqui assim que a maquininha for entregue.', delay: 1800 }
+];
+
+let checkoutTimer = null;
+function playWhatsAppCheckout() {
+  resetWhatsAppCheckout();
+  const body = document.getElementById('waBody2');
+  let i = 0;
+  function next() {
+    if (i >= checkoutScript.length) return;
+    const step = checkoutScript[i];
+    setTimeout(() => {
+      const t = body.querySelector('.wa-typing');
+      if (t) t.remove();
+
+      if (step.type === 'received' || step.type === 'sent') {
+        const div = document.createElement('div');
+        div.className = 'wa-msg ' + step.type;
+        const checks = step.type === 'sent' ? '<span class="checks">✓✓</span>' : '';
+        div.innerHTML = step.text + ' <span class="wa-time">' + timeNow() + checks + '</span>';
+        body.appendChild(div);
+      } else if (step.type === 'typing') {
+        const div = document.createElement('div');
+        div.className = 'wa-typing';
+        div.innerHTML = '<span></span><span></span><span></span>';
+        body.appendChild(div);
+      } else if (step.type === 'reply-buttons') {
+        const wrap = document.createElement('div');
+        wrap.className = 'wa-reply-buttons';
+        step.buttons.forEach(b => {
+          const btn = document.createElement('button');
+          btn.className = 'wa-reply-btn';
+          btn.textContent = b;
+          wrap.appendChild(btn);
+        });
+        body.appendChild(wrap);
+      }
+      body.scrollTop = body.scrollHeight;
+      i++;
+      checkoutTimer = setTimeout(next, 0);
+    }, step.delay);
+  }
+  next();
+}
+function resetWhatsAppCheckout() {
+  if (checkoutTimer) clearTimeout(checkoutTimer);
+  document.getElementById('waBody2').innerHTML = '';
+}
+
+/* Auto-play primeiro mockup quando entra na viewport */
+const autoplayObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      if (id === 'waBody1' && e.target.children.length === 0) {
+        playWhatsAppHunting();
+      }
+      if (id === 'waBody2' && e.target.children.length === 0) {
+        playWhatsAppCheckout();
+      }
+    }
+  });
+}, { threshold: 0.4 });
+autoplayObs.observe(document.getElementById('waBody1'));
+autoplayObs.observe(document.getElementById('waBody2'));
+</script>
+
+</body>
+</html>
